@@ -1,0 +1,17 @@
+package com.example.spring02_todolist.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.spring02_todolist.repository.TodoReopsitory;
+
+@Service
+public class TodoServiceImpl {
+	
+	@Autowired
+	private TodoReopsitory todoReopsitory;
+	
+	
+	
+
+}

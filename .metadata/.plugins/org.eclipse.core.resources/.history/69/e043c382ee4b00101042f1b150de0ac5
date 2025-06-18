@@ -1,0 +1,45 @@
+package com.example.spring02_jpademo.part01.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.spring02_jpademo.part01.dto.MemDTO;
+import com.example.spring02_jpademo.part01.repository.MemRepository;
+
+@Service
+public class MemServiceImpl implements MemService{
+	
+	@Autowired
+	private MemRepository memRepository;
+
+	public MemServiceImpl() {
+		}
+
+	@Override
+	public List<MemDTO> getByJPQL(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<MemDTO> getByCriteria(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<MemDTO> getByNativeQuery(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<MemDTO> getByNamedQuery(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}

@@ -1,0 +1,12 @@
+package com.example.spring02_jpademo.part01.entity;
+
+import jakarta.persistence.Entity;
+
+
+@Entity
+public class MemEntity {
+	private int num;
+	private String name;
+	private int age;
+	private String loc;
+}

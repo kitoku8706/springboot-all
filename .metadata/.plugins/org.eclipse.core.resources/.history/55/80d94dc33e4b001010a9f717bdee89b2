@@ -1,0 +1,106 @@
+package com.example.spring02_todolist.service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.example.spring02_todolist.Spring02TodolistApplication;
+import com.example.spring02_todolist.TodoDTO;
+import com.example.spring02_todolist.entity.TodoEntity;
+import com.example.spring02_todolist.repository.TodoReopsitory;
+
+import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
+
+
+@Slf4j 
+@Service
+public class TodoServiceImpl implements TodoService{
+
+    private final Spring02TodolistApplication spring02TodolistApplication;
+	
+	@Autowired
+	private TodoReopsitory todoRepository;
+	
+	public TodoServiceImpl(Spring02TodolistApplication spring02TodolistApplication) {
+        this.spring02TodolistApplication = spring02TodolistApplication;
+
+    }
+	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return super.clone();
+	}
+	@Override
+	protected void finalize() throws Throwable {
+		// TODO Auto-generated method stub
+		super.finalize();
+	}
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
+	
+
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public void insert(TodoDTO dto) throws Exception {
+		// TODO Auto-generated method stub
+		TodoEntity insert = todoRepository.save(dto.ToEntity());
+		log.info("insert=>{}",insert);
+		
+		if(true) throw new Exception("강제 예외 발생")
+	}
+
+	@Override
+	public void update(TodoDTO dto) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(int id) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Transactional()
+	@Override
+	public List<TodoDTO> search() throws Exception {
+		// TODO Auto-generated method stub
+		List<TodoEntity> listTodoEntity=todoRepository	.findAll();
+		// stream(): 리스트를 스트림으로 변환하여 각 요소에 map()을 적용
+	    // map(TodoDTO::toDTO): 각 TodoEntity를 TodoDTO로 변환 (정적 메서드 toDTO 사용)
+	    // collect(Collectors.toList()): 변환된 요소들을 다시 리스트로 수집
+		List<TodoDTO> listTodoDTO = listTodoEntity.stream()
+				.map(TodoDTO :: toDTO)
+				.collect(Collectors.toList());
+		return listTodoDTO;
+	}
+	
+	
+	
+	
+	
+	
+	
+
+}
+
+
+
+
+//

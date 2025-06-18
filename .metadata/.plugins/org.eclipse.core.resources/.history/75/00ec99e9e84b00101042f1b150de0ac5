@@ -1,0 +1,5 @@
+package com.example.spring02_todolist.part01.dto;
+
+public class MemDTO {
+
+}

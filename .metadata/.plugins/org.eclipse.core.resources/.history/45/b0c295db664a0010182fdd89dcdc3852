@@ -1,0 +1,5 @@
+package com.example.spring01_mvc.part02.dto;
+
+public class MemDTO {
+
+}
