@@ -87,6 +87,6 @@ public class MemEntity {
     @Query(name = "MemEntity.findExpensive")
     List<MemEntity> callNamedQuery(@Param("name") String name);
 
-
+https://kwin0825.tistory.com/166
 
 https://velog.io/@evan523/JPA-QueryDSL

@@ -51,9 +51,54 @@ public class MemServiceImpl implements MemService{
 
 	@Override
 	public List<MemDTO> getByNamedQuery(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		List<MemEntity> listMemEntity = memRepository.callNamedQuery(name);
+		List<MemDTO> listMemDTO = listMemEntity.stream()
+				.map(MemDTO::toDTO).collect(Collectors.toList());
+		log.info("callNamedQuery=>{}",listMemDTO);
+		return listMemDTO;
 	}
+	
+	@Override
+	public List<MemDTO> getMemByNum(int num) {
+		List<MemEntity> listMemEntity = memRepository.findMemEntityByNumGreaterThanEqual(num);
+		List<MemDTO> listMemDTO = listMemEntity.stream()
+			.map(MemDTO::toDTO).collect(Collectors.toList());
+	log.info("findMemEntityByNumGraeterThanEqual=>{}",listMemDTO);
+	return listMemDTO;
+}
+	
+	
+	@Override
+	public List<MemDTO> getMemByNameAndAge(String name, int age) {
+		List<MemEntity> listMemEntity = memRepository.findMemEntityByNameAndAge(name, age);
+		List<MemDTO> listMemDTO = listMemEntity.stream()
+				.map(MemDTO::toDTO).collect(Collectors.toList());
+		log.info("findMemEntityByNameAndAge=>{}",listMemDTO);
+		return listMemDTO;
+	}
+	
+	@Override
+	public List<MemDTO> getMemByAgeIsNotNull() {
+		List<MemEntity> listMemEntity = memRepository.findMemEntityByAgeIsNotNull();
+		List<MemDTO> listMemDTO = listMemEntity.stream()
+				.map(MemDTO::toDTO).collect(Collectors.toList());
+		log.info("findMemEntityByAgeIsNull=>{}",listMemDTO);
+		return listMemDTO;
+	}
+	
+//	@Override
+//	public int insertMemByNative(String name, int age, String loc) {
+//		int cnt=memRepository.insertMemByNative(name, age, loc);
+//		return cnt;
+//	}
+	
+	@Override
+	public int insertMemByNative(MemDTO memDTO) {
+		int cnt=memRepository.insertMemByNative(memDTO);
+		return cnt;
+	}
+
+	
 	
 	
 }

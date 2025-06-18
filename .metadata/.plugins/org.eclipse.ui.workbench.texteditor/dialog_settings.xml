@@ -10,6 +10,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="getMemByNameAndAge"/>
 			<item value="findByDynamicName"/>
 			<item value="spring_"/>
 			<item value="잠자기"/>
