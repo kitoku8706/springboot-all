@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.spring02_jpademo.part01.dto.MemDTO;
 import com.example.spring02_jpademo.part01.entity.MemEntity;
@@ -86,15 +87,38 @@ public class MemServiceImpl implements MemService{
 		return listMemDTO;
 	}
 	
+//	@Transactional
 //	@Override
 //	public int insertMemByNative(String name, int age, String loc) {
 //		int cnt=memRepository.insertMemByNative(name, age, loc);
 //		return cnt;
 //	}
 	
+//	@Transactional
+//	@Override
+//	public int insertMemByNative(MemDTO memDTO) {
+//		int cnt=memRepository.insertMemByNative(memDTO);
+//		return cnt;
+//	}
+	@Transactional
 	@Override
-	public int insertMemByNative(MemDTO memDTO) {
+	public int insertMem(MemDTO memDTO) {
 		int cnt=memRepository.insertMemByNative(memDTO);
+		return cnt;
+	}
+	@Transactional
+	@Override
+	public int updateMem(MemDTO memDTO) {
+		MemEntity memEntity = memDTO.toEntity();
+//		int cnt = memRepository.updateMemByNative(memEntity);
+		int cnt = memRepository.updateMemByJpql(memEntity);
+		return cnt;
+	}
+	@Transactional
+	@Override
+	public int deleteMem(int num) {
+//		int cnt= memRepository.deleteMemByNative(num);
+		int cnt=memRepository.deleteMemByJpql(num);
 		return cnt;
 	}
 

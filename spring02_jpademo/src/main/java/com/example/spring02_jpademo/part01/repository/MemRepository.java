@@ -38,15 +38,41 @@ public interface MemRepository extends JpaRepository<MemEntity, Integer>, MemRep
 	
 	//Native Query : Insert, Update, Delete
 	@Modifying
-	@Transactional
+	
 //	@Query(value = "INSERT INTO mem(name, age, loc) VALUES(mem_num)seq.nextval, :name,:age,:loc)",nativeQuery=true)
 //	int insertMemByNative(@Param("name") String name, @Param("age") Integer age, @Param("loc") String loc);
 	
 	@Query(value = "INSERT INTO mem(num,name, age, loc) VALUES(mem_num_seq.nextval, :#{#memDTO.name}, :#{#memDTO.age}, :#{#memDTO.loc})", nativeQuery=true)
 	int insertMemByNative(@Param("memDTO") MemDTO memDTO);
 	
+	
+	@Modifying
+	   @Query(value = "UPDATE mem SET name = :#{#memEntity.name}, age = :#{#memEntity.age},loc = :#{#memEntity.loc} WHERE num = :#{#memEntity.num}", nativeQuery = true)
+	   int updateMemByNative(@Param("memEntity") MemEntity memEntity);
+
+	
+	@Modifying
+    @Query(value = "DELETE FROM mem WHERE num = :num", nativeQuery = true)
+    int deleteMemByNative(@Param("num") int num);
+
+	
 	// JPQL : Updat, Delete
 	// JPQL 에서는 Insert은 제공안함
 	
-	
+	@Modifying
+	   @Query(value = "UPDATE MemEntity m  SET m.name = :#{#memEntity.name}, m.age = :#{#memEntity.age}, m.loc = :#{#memEntity.loc} WHERE m.num = :#{#memEntity.num}")
+	   int updateMemByJpql(@Param("memEntity") MemEntity memEntity);
+
+
+
+	@Modifying
+	   @Query(value = "DELETE FROM MemEntity m WHERE m.num = :num")
+	   int deleteMemByJpql(@Param("num") int num);
+
+
+
+
+
+
+
 }

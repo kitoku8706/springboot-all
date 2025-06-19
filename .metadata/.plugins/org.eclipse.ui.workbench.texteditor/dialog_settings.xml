@@ -10,6 +10,8 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="entityManagerFactory"/>
+			<item value="BoardEntity"/>
 			<item value="getMemByNameAndAge"/>
 			<item value="findByDynamicName"/>
 			<item value="spring_"/>

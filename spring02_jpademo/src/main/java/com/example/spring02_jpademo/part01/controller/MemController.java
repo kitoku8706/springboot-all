@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -65,8 +68,23 @@ public class MemController {
 	@PostMapping(value = "/mem")
 	public ResponseEntity<Integer> insertMemByNative(@RequestBody MemDTO mem){
 //		return ResponseEntity.ok().body(memService.insertMemByNative(mem.getName(),mem.getAge(),mem.getLoc()));
-		return ResponseEntity.ok().body(memService.insertMemByNative(mem));
+//		return ResponseEntity.ok().body(memService.insertMemByNative(mem));
+		return ResponseEntity.ok().body(memService.insertMem(mem));
 	}
+	
+//	{"num":7, "name":"차은우","age":28,"loc":"제주"}
+//  http://localhost:8090/mem
+	@PutMapping(value="/mem")
+	public ResponseEntity<Integer> updateMem(@RequestBody MemDTO memDTO){
+		return ResponseEntity.ok().body(memService.updateMem(memDTO));
+	}
+	
+//  http://localhost:8090/mem/5
+	@DeleteMapping(value="/mem/{num}")
+	public ResponseEntity<Integer> deleteMem(@PathVariable("num")int num){
+		return ResponseEntity.ok().body(memService.deleteMem(num));
+	}
+	
 	
 
 }
