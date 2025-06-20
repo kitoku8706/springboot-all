@@ -10,6 +10,9 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="filename"/>
+			<item value="boardser"/>
+			<item value="persist"/>
 			<item value="entityManagerFactory"/>
 			<item value="BoardEntity"/>
 			<item value="getMemByNameAndAge"/>
