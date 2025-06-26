@@ -10,6 +10,8 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="find"/>
+			<item value="findall"/>
 			<item value="filename"/>
 			<item value="boardser"/>
 			<item value="persist"/>

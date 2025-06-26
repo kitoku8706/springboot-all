@@ -1,9 +1,0 @@
-package com.example.spring02_jpademo.part01.repository;
-
-import org.springframework.stereotype.Repository;
-
-//2. MemRepositoryCustom 구현 클래스
-@Repository
-public class MemRepositoryCustomImpl implements MemRepositoryCustom {
-
-}
