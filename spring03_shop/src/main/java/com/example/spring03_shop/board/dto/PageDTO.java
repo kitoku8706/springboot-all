@@ -44,7 +44,7 @@ public class PageDTO {
 	
 
 		// 시작 페이지
-		startPage = (int) ((this.currentPage - 1) / blockPage) * blockPage + 1;
+		startPage = (long) ((this.currentPage - 1) / blockPage) * blockPage + 1;
 
 		// 끝 페이지
 		endPage = startPage + blockPage - 1;

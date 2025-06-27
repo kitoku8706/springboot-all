@@ -1,7 +1,7 @@
 ##############################################
 게시판 만들기
 ##############################################
-// Java에서 카멜표기법 -> oracle에서 스네이크 표기법
+//Java에서 카멜표기법(memberEmail) => oracle에서 스네이크 표기법(member_email)
 
 1. 테이블생성 
 CREATE TABLE   board(
@@ -81,18 +81,55 @@ VALUES ('제목1', NOW(), 0, LAST_INSERT_ID(), 0, 0, '내용 테스트.......', 
 
 
 
+#############################################
+      그룹      출력순서    출력들여쓰기
+num    ref    re_step   re_level
+ 1      1         0       0               => 제목글1
+ 2      2         0       0               => 제목글2
+ 3      1         4       1               => 제목1  => 답변 
+ 4      1         1       1               => 제목1  => 답변 
+ 5      1         2       2               => 제목1  => 답변4  => 답변
+ 6      6         0       0               => 제목글3
+ 7      1         3       3               => 제목1  => 답변4  => 답변5 => 답변
+
+ ref DESC,  re_step ASC
+
+ 제목6
+ 제목2
+ 제목1
+    답변4
+       답변5
+          답변7
+    답변3
+
+*/
 
 
 
 
+ALTER TABLE board
+RENAME COLUMN readcount TO  read_count;
+
+SELECT b.* FROM 
+    (SELECT rownum AS rm, a.*  FROM
+       (SELECT * FROM board ORDER BY ref DESC ,  re_step ASC)a)b
+WHERE  b.rm >= 1 AND b.rm <= 3;       
 
 
+UPDATE  board   b SET  b.re_step =  b.re_step + 1  WHERE  b.ref  =  1 AND  b.re_step  > 3;
 
+SELECT * FROM board;
 
+DELETE FROM board WHERE num=10;
+COMMIT;
+SELECT * FROM board;
 
-
-
-
+SELECT   department_id , 
+               CASE WHEN  department_id=10 THEN  'aaaa'
+                            WHEN department_id=20  THEN 'bbbb'
+                  ELSE 'cccc'
+                  END AS other                
+FROM departments;
 
 
 

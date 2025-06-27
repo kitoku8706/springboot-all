@@ -10,6 +10,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="BCryptPasswordEncoder"/>
 			<item value="find"/>
 			<item value="findall"/>
 			<item value="filename"/>

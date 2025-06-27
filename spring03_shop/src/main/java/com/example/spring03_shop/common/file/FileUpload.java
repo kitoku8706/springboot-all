@@ -1,17 +1,15 @@
 package com.example.spring03_shop.common.file;
 
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;
 
-
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import jakarta.servlet.http.HttpServletRequest;
-
 
 public class FileUpload {
 	
@@ -33,7 +31,6 @@ public class FileUpload {
 		return random;
 	}//end saveCopyFile()
 
-
 	
 	 public static String urlPath(HttpServletRequest request) {
 		 String root = request.getSession().getServletContext().getRealPath("/");
@@ -47,7 +44,4 @@ public class FileUpload {
 		 return saveDirectory;		 
 	 }
 
-
 }
-
-

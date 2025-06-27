@@ -15,7 +15,6 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-
 public class MembersDTO {
 	private String memberEmail; // 이메일
 	private String memberPass; // 비밀번호
@@ -35,5 +34,4 @@ public class MembersDTO {
 				.memberPass(membersEntity.getMemberPass()).memberName(membersEntity.getMemberName())
 				.memberPhone(membersEntity.getMemberPhone()).authRole(membersEntity.getAuthRole()).build();
 	}
-
 }

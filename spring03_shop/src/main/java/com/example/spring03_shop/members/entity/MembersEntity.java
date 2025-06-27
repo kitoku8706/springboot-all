@@ -1,7 +1,4 @@
 package com.example.spring03_shop.members.entity;
-
-
-
 import com.example.spring03_shop.members.dto.Role;
 
 import jakarta.persistence.Entity;
@@ -29,8 +26,8 @@ public class MembersEntity {
 	private String memberEmail; // 이메일
 	private String memberPass; // 비밀번호
 	private String memberName; // 이름
-	private String memberPhone; //전화번호
+	private String memberPhone; // 전화번호
 	
 	@Enumerated(EnumType.STRING)
-	private Role authRole; // 회원구분
+	private Role  authRole; //회원구분
 }
