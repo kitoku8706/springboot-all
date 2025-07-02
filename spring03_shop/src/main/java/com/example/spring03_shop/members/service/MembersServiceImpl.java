@@ -7,6 +7,9 @@ import com.example.spring03_shop.members.dto.ChangePwdCommand;
 import com.example.spring03_shop.members.dto.MembersDTO;
 import com.example.spring03_shop.members.entity.MembersEntity;
 import com.example.spring03_shop.members.repository.MembersRepository;
+
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Service
 public class MembersServiceImpl implements MembersService {
 	@Autowired
@@ -25,20 +28,22 @@ public class MembersServiceImpl implements MembersService {
 	} 
 	public MembersDTO getByMemberProcess(String memberEmail) {
 		Optional<MembersEntity> optMembersEntity = membersRepository.findById(memberEmail);
+		log.info("findById=>{}",membersRepository.findById(memberEmail));
+		log.info("optMembersEntity=>{}",optMembersEntity);
 		return MembersDTO.toDTO(optMembersEntity.get());
 	}
 	@Override
 	public AuthInfo updateMemberProcess(MembersDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+		membersRepository.save(dto.toEntity());
+		return new AuthInfo(dto.getMemberEmail(), dto.getMemberName(), dto.getMemberPass(), dto.getAuthRole());
 	}
 	@Override
 	public void updatePassProcess(String memberEmail, ChangePwdCommand changePwd) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
 	}
 	@Override
 	public void deleteMemberProcess(String memberEmail) {
-		// TODO Auto-generated method stub
+		membersRepository.deleteById(memberEmail);
 	}
 	
 	
