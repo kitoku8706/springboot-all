@@ -15,6 +15,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -79,6 +80,7 @@ public class BoardController {
     
     //첨부파일이 있을 때 @RequestBody을 선언하면 안된다.
     //답변글일때 ref, reStep, reLevel 담아서 넘겨야 한다.
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @PostMapping("/board/write")
     public ResponseEntity<String> writeProExecute(BoardDTO dto, HttpServletRequest req){
     	MultipartFile file = dto.getFilename();
@@ -105,6 +107,7 @@ public class BoardController {
     	return ResponseEntity.ok(boardDTO);
     }
     
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @PutMapping(value="/board/update")
     public ResponseEntity<Void> updateExecute(BoardDTO dto, HttpServletRequest req){
     	MultipartFile file =dto.getFilename();
@@ -117,6 +120,7 @@ public class BoardController {
     	return ResponseEntity.ok(null);
     }
     
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @DeleteMapping(value="/board/delete/{num}")
     public ResponseEntity<Void> deleteExecute(@PathVariable("num") Long num){
     	boardService.deleteProcess(num, tempDir);

@@ -3,28 +3,28 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<section name="java.lang.Class">
 		<item key="replaceBarOpen" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="로그인 완료됨(인증)"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="addhea"/>
+			<item value="REF"/>
+			<item value="로그인 완료됨(인증)"/>
+			<item value="localhost"/>
+			<item value="local"/>
+			<item value="JWT 처리 중 예외 발생"/>
+			<item value="탈퇴"/>
+			<item value="acce"/>
+			<item value="map"/>
+			<item value="response"/>
+			<item value="PrincipalDetails"/>
+			<item value="추가"/>
 			<item value="JwtAuthorizationFilter"/>
+			<item value="addhea"/>
 			<item value="BCryptPasswordEncoder"/>
 			<item value="find"/>
-			<item value="findall"/>
-			<item value="filename"/>
-			<item value="boardser"/>
-			<item value="persist"/>
-			<item value="entityManagerFactory"/>
-			<item value="BoardEntity"/>
-			<item value="getMemByNameAndAge"/>
-			<item value="findByDynamicName"/>
-			<item value="spring_"/>
-			<item value="잠자기"/>
-			<item value="requ"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -135,6 +135,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		final Map<String, Object> body = new HashMap<>();
 		body.put("memberName", principalDetails.getAuthInfo().getMemberName());
 		body.put("memberEmail", principalDetails.getAuthInfo().getMemberEmail());
+		body.put("authRole", principalDetails.getAuthInfo().getAuthRole());
 		
 		// body.put("accessToken", accessToken);
 		// body.put("refreshToken", refreshToken);
