@@ -8,9 +8,12 @@
 		<item value="kitoku8706 &lt;kitoku8706@gmail.com&gt;"/>
 	</list>
 	<list key="EGit.KnownHosts">
+		<item value="bitbucket.org"/>
 		<item value="git.eclipse.org"/>
 		<item value="github.com"/>
-		<item value="bitbucket.org"/>
+	</list>
+	<list key="RepositorySelectionPage.UsedUris">
+		<item value="https://github.com/shindaeh/mysampletwo.git"/>
 	</list>
 	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
 		<item key="MAIN_SASH_FORM_ORIENTATION_VERTICAL" value="false"/>

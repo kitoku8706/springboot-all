@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.spring04_mybatis.ex02.BookMapper">  
+<select id="selectList" resultType="com.example.spring04_mybatis.ex02.Book">
+		SELECT * FROM book
+		ORDER BY code
+	</select>
+
+<!-- insert할때 null값을 허용할때는 #{컬럼명, jdbcType=VARCHAR} -->
+	<insert id="insertBook" parameterType="com.example.spring04_mybatis.ex02.Book"  >
+		INSERT INTO book( code, title, author, publisher)
+		VALUES(#{code, jdbcType=VARCHAR}, #{title, jdbcType=VARCHAR}, #{author, jdbcType=VARCHAR}, #{publisher, jdbcType=VARCHAR})
+	</insert>
+
+<update id="updateBook" parameterType="java.util.HashMap">
+		UPDATE book
+		SET title=#{title}, author=#{author}, publisher=#{publisher}
+		WHERE code=#{code}
+	</update>
+
+<delete id="deleteBook" parameterType="string">
+		DELETE FROM book 
+		WHERE code=#{code}
+	</delete>
+
+<!-- 
+	INSERT ALL INTO 테이블명(컬럼1, 컬럼2, 컬럼3)
+    VALUES(값1, 값2, 값3), (값1, 값2, 값3), (값1, 값2, 값3)
+    INSERT ALL     
+        INTO book(code, title, author, publisher)   VALUES ('IT002', '모두의 딥러닝', '송호연', '길벗')
+        INTO book(code, title, author, publisher)   VALUES ('IT003', 'Do it! 점프 투 파이썬', '박응용', '이지스퍼블리싱')
+	 -->
+	 
+	<insert id="insertMulti" parameterType="java.util.List">
+      INSERT ALL
+       <foreach collection="list" item="element" index="no">
+         INTO book(code, title, author, publisher)
+        VALUES (#{element.code}, #{element.title}, #{element.author}, #{element.publisher})
+      </foreach>
+      SELECT * FROM dual
+</insert>
+
+<!--  DELETE FROM book WHERE code IN ("B001","B002", "B003") -->
+    <delete id="delMulti" >
+     DELETE FROM book
+     WHERE code IN(
+       <foreach collection="array" item="element" separator=",">
+         #{element}
+       </foreach>
+     )
+    </delete>
+
+ <!-- dynamic if -->
+    <select id="search" parameterType="com.example.spring04_mybatis.ex02.Book" resultType="com.example.spring04_mybatis.ex02.Book">
+      SELECT * FROM book
+     <!--  <where>
+       <if test="title != null and title != ''">
+            title LIKE '%' || #{title} || '%' 
+        </if>
+        
+        <if test="author != null and author != ''">
+         OR  author LIKE '%' || #{author} || '%'
+        </if>
+        
+          <if test="publisher != null and publisher != ''">
+         OR  publisher LIKE '%' || #{publisher} || '%'
+        </if>
+      </where> -->
+      
+      <trim prefix="WHERE" prefixOverrides="OR |AND ">
+    <if test="title != null and title != ''">
+      title LIKE '%' || #{title} || '%'
+    </if>
+    
+    <if test="author != null and author != ''">
+      OR author LIKE '%' || #{author} || '%'
+    </if>
+    
+    <if test="publisher != null and publisher != ''">
+      OR publisher LIKE '%' || #{publisher} || '%'
+    </if>
+  </trim>
+    </select> 
+
+<!-- 다중 update -->
+    <update id="updateMulti"  parameterType="com.example.spring04_mybatis.ex02.Book">
+      UPDATE book     
+      <set>
+        <if test="title!=null">
+           title=#{title},
+        </if>
+        
+        <if test="author!=null">
+       LIKE concat('%', #{author},'%'),
+        </if>
+        
+         <if test="publisher!=null">
+         LIKE concat('%', #{publisher},'%')
+        </if>
+      </set>
+      WHERE code=#{code}
+    </update>
+
+ <!-- choose 동적 sql (if~else) -->
+    <insert id="insertDymic" parameterType="com.example.spring04_mybatis.ex02.Book">
+      INSERT INTO book(code, title, author, publisher)
+      VALUES(#{code}, #{title},
+      <choose>
+        <when test="author==null">
+           '작가미상'
+        </when>
+        <otherwise>
+         #{author}
+        </otherwise>      
+       </choose>,
+       #{publisher} )
+    </insert>
+
+
+
+
+
+
+</mapper>

@@ -12,4 +12,6 @@ public interface BoardService {
 	public BoardDTO contentProcess(long num);
 	public void updateProcess(BoardDTO dto, String tempDir);
 	public void deleteProcess(long num, String tempDir);
+	public BoardDTO updateViewProcess(long num);
+	
 }

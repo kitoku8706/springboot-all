@@ -10,6 +10,14 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="spring.datasource.url="/>
+			<item value="spring.datasource.url=jdbc:"/>
+			<item value="increaseReadCount"/>
+			<item value="CREATE TABLE"/>
+			<item value="CREATE"/>
+			<item value="shop"/>
+			<item value="spring03_shop"/>
+			<item value="findWithMemberNameByNum"/>
 			<item value="REF"/>
 			<item value="로그인 완료됨(인증)"/>
 			<item value="localhost"/>
@@ -17,14 +25,6 @@
 			<item value="JWT 처리 중 예외 발생"/>
 			<item value="탈퇴"/>
 			<item value="acce"/>
-			<item value="map"/>
-			<item value="response"/>
-			<item value="PrincipalDetails"/>
-			<item value="추가"/>
-			<item value="JwtAuthorizationFilter"/>
-			<item value="addhea"/>
-			<item value="BCryptPasswordEncoder"/>
-			<item value="find"/>
 		</list>
 		<list key="replacehistory">
 		</list>

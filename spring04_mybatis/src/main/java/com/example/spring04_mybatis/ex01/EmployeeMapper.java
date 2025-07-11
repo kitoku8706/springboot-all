@@ -6,6 +6,11 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface EmployeeMapper {
-	List<Department> selectDepartmentList();
+	//@Select(value = "SELECT * FROM departments")
+	public List<Department> selectDepartmentList();
+	
+	public List<Employee> selectJoinList();
+	
+	public List<Department> selectCollList();
 
 }

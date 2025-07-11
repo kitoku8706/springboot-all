@@ -101,11 +101,23 @@ public class BoardController {
     	return ResponseEntity.ok(String.valueOf(1));
     }//end writeProExecute()//////////////////////////////////////////////////////    
   
+    
+    // 상세페이지 조회
     @GetMapping(value="/board/view/{num}")
     public ResponseEntity<BoardDTO> viewExecute(@PathVariable("num") Long num){
     	BoardDTO boardDTO = boardService.contentProcess(num);
+    	System.out.println(boardDTO);
     	return ResponseEntity.ok(boardDTO);
     }
+    
+ // 상세페이지 조회
+    @GetMapping(value="/board/updateview/{num}")
+    public ResponseEntity<BoardDTO> updateviewExecute(@PathVariable("num") Long num){
+    	BoardDTO boardDTO = boardService.updateViewProcess(num);
+    	
+    	return ResponseEntity.ok(boardDTO);
+    }
+    
     
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @PutMapping(value="/board/update")

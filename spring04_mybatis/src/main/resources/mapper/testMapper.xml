@@ -7,6 +7,53 @@
   SELECT * FROM departments
   </select>
   
+  <!-- association : 1:1관계의 JOIN명령을 처리하기 위해 사용된다. -->
+	<resultMap type="com.example.spring04_mybatis.ex01.Employee" id="emp_dept_result" autoMapping="true">
+		<!-- <id column="employee_id" property="employee_id" />
+		     <result column="first_name" property="first_name" />
+			 <result column="salary" property="salary" /> -->
+		<association property="dept"
+			javaType="com.example.spring04_mybatis.ex01.Department" autoMapping="true">
+			<!-- <id column="department_id" property="department_id" />
+			     <result column="department_name" property="department_name"/> -->
+		</association>
+	</resultMap>
+	
+  
+    <select id="selectJoinList" resultMap="emp_dept_result">
+		SELECT e.employee_id,
+		e.first_name, e.salary, e.hire_date, d.department_id,
+		d.department_name
+		FROM employees e, departments d
+		WHERE e.department_id=d.department_id
+		ORDER BY e.employee_id
+	</select>
+
+<!-- collection : join에서 1 대 N의 관계 -->
+	<resultMap type="com.example.spring04_mybatis.ex01.Department"
+		id="dept_emp_result" >
+		 <id column="department_id" property="department_id" />
+		<result column="department_name" property="department_name" />
+		<collection property="listEmp" javaType="java.util.List"
+			ofType="com.example.spring04_mybatis.ex01.Employee"  >
+			 <id column="employee_id" property="employee_id" />
+			<result column="first_name" property="first_name" />
+			<result column="salary" property="salary" />
+			<result column="hire_date" property="hire_date" />
+		</collection>
+	</resultMap>
+	
+   <select id="selectCollList" resultMap="dept_emp_result">
+		SELECT d.department_id,
+		d.department_name,
+		e.employee_id, e.first_name, e.salary, e.hire_date
+		FROM departments d, employees e
+		WHERE d.department_id = e.department_id
+	</select>
+
+
+
+  
 </mapper>
 
 

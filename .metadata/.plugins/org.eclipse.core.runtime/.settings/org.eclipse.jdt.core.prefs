@@ -1,7 +1,10 @@
 eclipse.preferences.version=1
+org.eclipse.jdt.core.classpathVariable.ECLIPSE_HOME=C\:/web_ai/utill/sts-4.31.0.RELEASE/
 org.eclipse.jdt.core.classpathVariable.JRE_LIB=C\:/Program Files/java/jdk-17.0.15.6-hotspot/lib/jrt-fs.jar
 org.eclipse.jdt.core.classpathVariable.JRE_SRC=C\:/Program Files/java/jdk-17.0.15.6-hotspot/lib/src.zip
 org.eclipse.jdt.core.classpathVariable.JRE_SRCROOT=
+org.eclipse.jdt.core.classpathVariable.JUNIT_HOME=C\:/web_ai/utill/sts-4.31.0.RELEASE/plugins/org.junit_4.13.2.v20240929-1000.jar
+org.eclipse.jdt.core.classpathVariable.M2_REPO=C\:/Users/\uAC15\uC7581_09/.m2/repository
 org.eclipse.jdt.core.codeComplete.visibilityCheck=enabled
 org.eclipse.jdt.core.compiler.codegen.targetPlatform=17
 org.eclipse.jdt.core.compiler.compliance=17
